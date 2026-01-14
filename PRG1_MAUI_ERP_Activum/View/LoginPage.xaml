@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PRG1_MAUI_ERP_Activum.View.LoginPage"
+             Title="Logga in"
+             Padding="0">
+    <VerticalStackLayout>
+        <Image
+                Source="logga_activum_vit.png"
+                WidthRequest="200"
+                HeightRequest="200"
+                HorizontalOptions="Center"
+                Margin="20" />
+
+        <Entry
+                x:Name="usernameEntry"
+                Placeholder="Username"
+                BackgroundColor="White"
+                WidthRequest="350"
+                TextColor="Black"
+                Margin="20"/>
+        <Entry
+                x:Name="passwordEntry"
+                Placeholder="Password"
+                BackgroundColor="White"
+                TextColor="Black"
+                IsPassword="True"
+                WidthRequest="350"
+                Margin="20"/>
+
+        <Button Text="Logga in" WidthRequest="300" Padding="20" BackgroundColor="#134f5c" TextColor="White" FontSize="16" ></Button>
+    </VerticalStackLayout>
+</ContentPage>

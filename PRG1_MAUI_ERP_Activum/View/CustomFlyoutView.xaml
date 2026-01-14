@@ -208,6 +208,27 @@
                            FontSize="20"
                            TextColor="White"/>
                 </Grid>
+
+                <!-- Login -->
+                <Grid
+                    ColumnDefinitions="40,*"
+                    Padding="5">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer 
+                        Command="{Binding NavigateCommand}"
+                        CommandParameter="LoginPage" />
+                    </Grid.GestureRecognizers>
+
+                    <Image Source="circle_user_white.png"
+                       WidthRequest="17"
+                       HeightRequest="17"
+                      />
+
+                    <Label Grid.Column="1"
+           Text="Login Sida"
+           FontSize="20"
+           TextColor="White"/>
+                </Grid>
             </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
