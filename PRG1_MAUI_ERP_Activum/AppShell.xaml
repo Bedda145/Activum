@@ -19,5 +19,7 @@
     <ShellContent Route="SalaryPage" ContentTemplate="{DataTemplate local:SalaryPage}" />
     <ShellContent Route="PerDiemPage" ContentTemplate="{DataTemplate local:PerDiemPage}" />
     <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
-    
+
+    <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" /> 
+
 </Shell>
