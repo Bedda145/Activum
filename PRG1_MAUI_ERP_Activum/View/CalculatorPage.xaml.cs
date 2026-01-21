@@ -1,112 +1,204 @@
+using System.Globalization;
+
 namespace PRG1_MAUI_ERP_Activum.View;
 
-public partial class CalculatorPage : ContentPage
+public partial class MainPage : ContentPage
 {
-	public CalculatorPage()
-	{
-		InitializeComponent();
-	}
+    double storedValue = 0;
+    string currentOperator = "";
+    bool isNewEntry = true;
 
-    private double accumulator = 0;
-    private double operand = 0;
-    private string operation = "";
-
-    // hantering för numeriska knappar
-    private void NumberButton(object sender, EventArgs e)
+    public CalculatorPage()
     {
-        Button button = (Button)sender;
-
-        // Bygg upp operand baserat på knapptexten (t.ex. "1", "2")
-        operand = (operand * 10) + Convert.ToDouble(button.Text);
-
-        EntryCalculations.Text += button.Text;
-        EntryResult.Text = operand.ToString();
+        InitializeComponent();
     }
 
-
-    // hantering för operator-knappar (+, -, *, /)
-    private void OperatorButton(object sender, EventArgs e)
+    void OnButtonClicked(object sender, EventArgs e)
     {
-        if (operation != "") // Utför beräkning om en tidigare operation finns
+        Button pressedButton = sender as Button;
+        string buttonText = pressedButton.Text;
+
+        if (buttonText == "C")
+        {
+            ClearAll();
+        }
+        else if (buttonText == "?")
+        {
+            Backspace();
+        }
+        else if (buttonText == "=")
         {
             Calculate();
         }
+        else if (buttonText == "±")
+        {
+            ToggleSign();
+        }
+        else if (buttonText == "%")
+        {
+            Percentage();
+        }
         else
         {
-            accumulator = operand; // Spara första talet i accumulator
+
+            if (buttonText == "+")
+            {
+                ProcessOperator(buttonText);
+            }
+            else if (buttonText == "-")
+            {
+                ProcessOperator(buttonText);
+            }
+            else if (buttonText == "x")
+            {
+                ProcessOperator(buttonText);
+            }
+            else if (buttonText == "÷")
+            {
+                ProcessOperator(buttonText);
+            }
+            else
+            {
+                ProcessDigit(buttonText);
+            }
         }
-
-        operand = 0;
-
-        Button button = (Button)sender;
-        operation = button.Text;
-
-        EntryCalculations.Text += $" {operation} ";
     }
 
-
-    private void EqualButton(object sender, EventArgs e)
+    void ProcessDigit(string digit)
     {
-        Calculate();
-
-        EntryResult.Text = accumulator.ToString();
-        EntryCalculations.Text = accumulator.ToString();
-
-        operation = "";
-        operand = 0;
-    }
-
-
-    private void Calculate()
-    {
-        switch (operation)
+        if (isNewEntry)
         {
-            case "+":
-                accumulator += operand;
-                break;
-            case "-":
-                accumulator -= operand;
-                break;
-            case "*":
-                accumulator *= operand;
-                break;
-            case "/":
-                if (operand == 0) // Hantera division med noll
-                {
-                    DisplayAlertAsync("Fel!", "Division med noll är ej tillåtet.", "OK");
-                    Clear();
-                    return;
-                }
-                accumulator /= operand;
-                break;
+            DisplayEntry.Text = digit;
+            isNewEntry = false;
         }
-
-        operand = 0;
+        else
+        {
+            if (DisplayEntry.Text == "0")
+            {
+                DisplayEntry.Text = digit;
+            }
+            else
+            {
+                DisplayEntry.Text = DisplayEntry.Text + digit;
+            }
+        }
     }
 
-    private void ClearButton(object sender, EventArgs e)
+    void ProcessOperator(string op)
     {
-        Clear();
+        try
+        {
+            double currentValue = double.Parse(DisplayEntry.Text, CultureInfo.InvariantCulture);
+            if (currentOperator != "")
+            {
+                storedValue = PerformCalculation(storedValue, currentValue, currentOperator);
+                DisplayEntry.Text = storedValue.ToString(CultureInfo.InvariantCulture);
+            }
+            else
+            {
+                storedValue = currentValue;
+            }
+            currentOperator = op;
+            isNewEntry = true;
+        }
+        catch
+        {
+            DisplayEntry.Text = "Error";
+        }
     }
 
-    private void Clear()
+    void Calculate()
     {
-        accumulator = 0;
-        operand = 0;
-        operation = "";
-
-        EntryCalculations.Text = "";
-        EntryResult.Text = "0";
+        try
+        {
+            if (currentOperator == "")
+            {
+                return;
+            }
+            double currentValue = double.Parse(DisplayEntry.Text, CultureInfo.InvariantCulture);
+            double result = PerformCalculation(storedValue, currentValue, currentOperator);
+            DisplayEntry.Text = result.ToString(CultureInfo.InvariantCulture);
+            storedValue = result;
+            currentOperator = "";
+            isNewEntry = true;
+        }
+        catch
+        {
+            DisplayEntry.Text = "Error";
+        }
     }
 
-    private void StoreInMemoryButton(object sender, EventArgs e)
+    double PerformCalculation(double a, double b, string op)
     {
-        EntryCalculations.Text = "Kommande funktion";
+        if (op == "+")
+        {
+            return a + b;
+        }
+        if (op == "-")
+        {
+            return a - b;
+        }
+        if (op == "x")
+        {
+            return a * b;
+        }
+        if (op == "÷")
+        {
+            return a / b;
+        }
+        return b;
     }
 
-    private void CatchFromMemoryButton(object sender, EventArgs e)
+    void ClearAll()
     {
-        EntryCalculations.Text = "Kommande funktion";
+        DisplayEntry.Text = "0";
+        storedValue = 0;
+        currentOperator = "";
+        isNewEntry = true;
     }
 
+    void Backspace()
+    {
+        if (isNewEntry == false)
+        {
+            if (DisplayEntry.Text.Length > 0)
+            {
+                DisplayEntry.Text = DisplayEntry.Text.Substring(0, DisplayEntry.Text.Length - 1);
+                if (DisplayEntry.Text == "")
+                {
+                    DisplayEntry.Text = "0";
+                    isNewEntry = true;
+                }
+            }
+        }
+    }
+
+    void ToggleSign()
+    {
+        try
+        {
+            double currentValue = double.Parse(DisplayEntry.Text, CultureInfo.InvariantCulture);
+            currentValue = -currentValue;
+            DisplayEntry.Text = currentValue.ToString(CultureInfo.InvariantCulture);
+        }
+        catch
+        {
+
+        }
+    }
+
+    void Percentage()
+    {
+        try
+        {
+            double currentValue = double.Parse(DisplayEntry.Text, CultureInfo.InvariantCulture);
+            currentValue = currentValue / 100;
+            DisplayEntry.Text = currentValue.ToString(CultureInfo.InvariantCulture);
+        }
+        catch
+        {
+
+        }
+    }
+}
 }
