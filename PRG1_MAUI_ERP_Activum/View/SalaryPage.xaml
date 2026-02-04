@@ -2,14 +2,59 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRG1_MAUI_ERP_Activum.View.SalaryPage"
-             Title="Lön &amp; Bonus">
-    <VerticalStackLayout>
-        <Label
-            Padding="20"
-            Text="Lön &amp; Bonus"
-            Style="{StaticResource Headline}"
-            SemanticProperties.HeadingLevel="Level1"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Lön &amp; Bonus"
+             BackgroundColor="#1E1E1E">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="30">
+            <Label Text="Löneberäkning"
+                   Style="{StaticResource Headline}"
+                   SemanticProperties.HeadingLevel="Level1"
+                   TextColor="White"
+                   HorizontalOptions="Center" />
+
+            <VerticalStackLayout Spacing="10">
+                <Label Text="Ange månadens försäljning (kr):" TextColor="#CCCCCC" />
+                <Entry x:Name="SalesEntry"
+                       Placeholder="t.ex. 100000"
+                       Keyboard="Numeric"
+                       BackgroundColor="White"
+                       TextColor="Black"
+                       HeightRequest="50"/>
+            </VerticalStackLayout>
+
+            <Button Text="Beräkna Lön"
+                    Clicked="OnCalculateSalaryClicked"
+                    BackgroundColor="#007ACC"
+                    TextColor="White"
+                    FontSize="18"
+                    CornerRadius="8"
+                    HeightRequest="50"/>
+
+            <BoxView HeightRequest="1" Color="Gray" Margin="0,10,0,10"/>
+
+            <Border Stroke="Gray" StrokeThickness="1" BackgroundColor="#2D2D30" Padding="20">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+
+                <Grid RowDefinitions="Auto, Auto, Auto, Auto" ColumnDefinitions="*, Auto" RowSpacing="15">
+
+                    <Label Grid.Row="0" Grid.Column="0" Text="Grundlön" TextColor="#AAAAAA"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="26 000 kr" TextColor="White" FontAttributes="Bold"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" Text="Provision (12%):" TextColor="#AAAAAA"/>
+                    <Label x:Name="CommissionLabel" Grid.Row="1" Grid.Column="1" Text="0 kr" TextColor="#64B5F6"/>
+
+                    <Label Grid.Row="2" Grid.Column="0" Text="Skatt (32%):" TextColor="#AAAAAA"/>
+                    <Label x:Name="TaxLabel" Grid.Row="2" Grid.Column="1" Text="0 kr" TextColor="#E57373"/>
+
+                    <Label Grid.Row="3" Grid.Column="0" Text="ATT UTBETALA:" TextColor="White" FontAttributes="Bold" FontSize="18"/>
+                    <Label x:Name="NetSalaryLabel" Grid.Row="3" Grid.Column="1" Text="0 kr" TextColor="#81C784" FontAttributes="Bold" FontSize="20"/>
+
+
+                </Grid>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
