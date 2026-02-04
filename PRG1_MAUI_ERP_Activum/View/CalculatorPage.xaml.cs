@@ -1,6 +1,6 @@
-using System.Globalization;
+ï»¿using System.Globalization;
 
-namespace PRG1_MAUI_ERP_Activum.View;
+namespace PRG1_MAUI_ERP_Activum.View.CalculatorPage;
 
 public partial class MainPage : ContentPage
 {
@@ -22,7 +22,7 @@ public partial class MainPage : ContentPage
         {
             ClearAll();
         }
-        else if (buttonText == "?")
+        else if (buttonText == "âŒ«")
         {
             Backspace();
         }
@@ -30,7 +30,7 @@ public partial class MainPage : ContentPage
         {
             Calculate();
         }
-        else if (buttonText == "±")
+        else if (buttonText == "Â±")
         {
             ToggleSign();
         }
@@ -53,7 +53,7 @@ public partial class MainPage : ContentPage
             {
                 ProcessOperator(buttonText);
             }
-            else if (buttonText == "÷")
+            else if (buttonText == "Ã·")
             {
                 ProcessOperator(buttonText);
             }
@@ -142,7 +142,7 @@ public partial class MainPage : ContentPage
         {
             return a * b;
         }
-        if (op == "÷")
+        if (op == "Ã·")
         {
             return a / b;
         }
