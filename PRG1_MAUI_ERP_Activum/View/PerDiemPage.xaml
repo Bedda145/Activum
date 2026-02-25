@@ -11,5 +11,40 @@
             SemanticProperties.HeadingLevel="Level1"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+
+        <Entry
+            x:Name="Field_one"
+            Margin="20"
+            Placeholder="Hela dagar"
+            Keyboard="Numeric" />
+
+        <Entry
+            x:Name="Field_two"
+            Margin="20"
+            Placeholder="Halv dagar"
+            Keyboard="Numeric" />
+
+        <Entry
+            x:Name="Field_three"
+            Margin="20"
+            Placeholder="Extra Kostnader"
+            Keyboard="Numeric" />
+
+        <Button x:Name="Calculate" Text="Beräkna" Clicked="CalculateBtn" WidthRequest="100" HorizontalOptions="Center" Margin="20" BackgroundColor="#134f5c" TextColor="White" FontSize="16" />
+
+
+        <Label
+            x:Name="Result"
+            Margin="70"
+            TextColor="White"
+            BackgroundColor="#134f5c"
+            Padding="10"
+            FontSize="20"
+            Style="{StaticResource Body}"
+            SemanticProperties.HeadingLevel="Level2"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+
     </VerticalStackLayout>
 </ContentPage>
