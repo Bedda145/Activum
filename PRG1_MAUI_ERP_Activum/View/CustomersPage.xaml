@@ -3,13 +3,41 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRG1_MAUI_ERP_Activum.View.CustomersPage"
              Title="Kunder">
-    <VerticalStackLayout>
-        <Label
-            Padding="20"
-            Text="Kunder"
-            Style="{StaticResource Headline}"
-            SemanticProperties.HeadingLevel="Level1"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid RowDefinitions="Auto, Auto, Auto, *" Padding="20" RowSpacing="15">
+
+        <Label Grid.Row="0" Text="Kundregister" Style="{StaticResource Headline}" HorizontalOptions="Center" />
+
+        <SearchBar Grid.Row="1" Placeholder="Sök kund (namn eller org/pnr..."
+                   SearchCommand="{Binding SearchCommand}"
+                   SearchCommandParameter="{Binding Text, Source={RelativeSource Self}}" />
+
+        <HorizontalStackLayout Grid.Row="2" Spacing="10" HorizontalOptions="Center">
+            <Entry Placeholder="Förnamn" Text="{Binding NewFirstName}" WidthRequest="120" BackgroundColor="White" TextColor="Black"/>
+            <Entry Placeholder="Efternamn" Text="{Binding NewLastName}" WidthRequest="120" BackgroundColor="White" TextColor="Black"/>
+            <Entry Placeholder="Personnr" Text="{Binding NewPersonalNumber}" WidthRequest="120" BackgroundColor="White" TextColor="Black"/>
+            <Button Text="Lägg till" Command="{Binding AddCustomerCommand}" BackgroundColor="#134f5c" TextColor="White"/>
+        </HorizontalStackLayout>
+
+        <Grid Grid.Row="3" RowDefinitions="Auto, *">
+            <Grid Grid.Row="0" ColumnDefinitions="2*, 2*, 2*, *" Padding="10" BackgroundColor="#134f5c">
+                <Label Text="Namn" TextColor="White" FontAttributes="Bold" />
+                <Label Grid.Column="1" Text="Personnummer" TextColor="White" FontAttributes="Bold" />
+                <Label Grid.Column="2" Text="Email" TextColor="White" FontAttributes="Bold" />
+                <Label Grid.Column="3" Text="Åtgärd" TextColor="White" FontAttributes="Bold" />
+            </Grid>
+
+            <CollectionView Grid.Row="1" ItemsSource="{Binding DisplayCustomers}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="2*, 2*, 2*, *" Padding="10">
+                            <Label Text="{Binding FullName}" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Text="{Binding PersonalNumber}" VerticalOptions="Center"/>
+                            <Label Grid.Column="2" Text="{Binding Email}" VerticalOptions="Center"/>
+                            <Button Grid.Column="3" Text="Ta bort" Command="{Binding Source={RelativeSource AncestorType{x:Type ColletionView}}, Path=BindingContext.RemoveCustomerCommand}" CommandParameter="{Binding .}" BackgroundColor="Red" TextColor="White" Padding="5" HeightRequest="35"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </Grid>
 </ContentPage>
