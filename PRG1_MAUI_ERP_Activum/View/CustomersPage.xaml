@@ -33,7 +33,7 @@
                             <Label Text="{Binding FullName}" VerticalOptions="Center" />
                             <Label Grid.Column="1" Text="{Binding PersonalNumber}" VerticalOptions="Center"/>
                             <Label Grid.Column="2" Text="{Binding Email}" VerticalOptions="Center"/>
-                            <Button Grid.Column="3" Text="Ta bort" Command="{Binding Source={RelativeSource AncestorType{x:Type ColletionView}}, Path=BindingContext.RemoveCustomerCommand}" CommandParameter="{Binding .}" BackgroundColor="Red" TextColor="White" Padding="5" HeightRequest="35"/>
+                            <Button Grid.Column="3" Text="Ta bort" Command="{Binding Source={RelativeSource AncestorType={x:Type CollectionView}}, Path=BindingContext.RemoveCustomerCommand}" CommandParameter="{Binding .}" BackgroundColor="Red" TextColor="White" Padding="5" HeightRequest="35"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

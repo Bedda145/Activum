@@ -28,7 +28,7 @@ namespace PRG1_MAUI_ERP_Activum.ViewModels
         public string? NewEmail { get; set; }
         public string? NewPhoneNumber { get; set; }
 
-        public ICommand AddCustomersCommand { get; }
+        public ICommand AddCustomerCommand { get; }
         public ICommand RemoveCustomerCommand { get; }
         public ICommand SearchCommand { get; }
 
@@ -42,7 +42,7 @@ namespace PRG1_MAUI_ERP_Activum.ViewModels
 
             DisplayCustomers = new ObservableCollection<Customer>(_allCustomers);
 
-            AddCustomersCommand = new Command(() =>
+            AddCustomerCommand = new Command(() =>
             {
                 if (!string.IsNullOrWhiteSpace(NewFirstName) && !string.IsNullOrWhiteSpace(NewLastName))
                 {
