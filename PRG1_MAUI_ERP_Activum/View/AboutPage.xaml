@@ -2,14 +2,41 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRG1_MAUI_ERP_Activum.View.AboutPage"
-             Title="Om Macrosoft">
-    <VerticalStackLayout>
-        <Label
-            Padding="20"
-            Text="Om Macrosoft"
-            Style="{StaticResource Headline}"
-            SemanticProperties.HeadingLevel="Level1"
-            VerticalOptions="Center" 
+             Title="Om oss"
+             BackgroundColor="#1E1E1E">
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="30" VerticalOptions="Center">
+            <Label Text="Activum ERP"
+            FontSize="32"
+            FontAttributes="Bold"
+            TextColor="White"
             HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+            <Label Text="Version 1.0"
+                   FontSize="16"
+                   TextColor="#AAAAAA"
+                   HorizontalOptions="Center" />
+
+            <BoxView HeightRequest="1" Color="Gray" WidthRequest="200" Margin="0,20,0,20" />
+
+            <Label Text="Detta är ett verktyg för att hantera löner, traktamenter och personaladministration för Activum Försäkringar"
+                   TextColor="White"
+                   HorizontalTextAlignment="Center"
+                   FontSize="16" />
+
+            <VerticalStackLayout Spacing="5" Margin="0,30,0,0">
+                <Label Text="Utvecklat av:" TextColor="#007ACC" FontAttributes="Bold" HorizontalOptions="Center" />
+
+                <Label Text="Bedda145" TextColor="White" HorizontalOptions="Center" />
+                <Label Text="GriphcodeDev" TextColor="White" HorizontalOptions="Center" />
+            </VerticalStackLayout>
+
+            <Label Text="@ 2024 Activum"
+                   TextColor="#555555"
+                   FontSize="12"
+                   HorizontalOptions="Center"
+                   Margin="0,40,0,0"/>
+            
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

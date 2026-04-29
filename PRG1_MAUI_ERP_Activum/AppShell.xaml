@@ -18,8 +18,11 @@
     <ShellContent Route="CalculatorPage" ContentTemplate="{DataTemplate local:CalculatorPage}" />
     <ShellContent Route="SalaryPage" ContentTemplate="{DataTemplate local:SalaryPage}" />
     <ShellContent Route="PerDiemPage" ContentTemplate="{DataTemplate local:PerDiemPage}" />
-    <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
 
-    <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" /> 
+    <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
+    <ShellContent
+        Title="Om oss"
+        Route="AboutPage"
+        ContentTemplate="{DataTemplate local:AboutPage}" />
 
 </Shell>
