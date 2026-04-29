@@ -11,6 +11,11 @@
     <Color x:Key="Secondary">#DFD8F7</Color>
     <Color x:Key="SecondaryDarkText">#9880e5</Color>
     <Color x:Key="Tertiary">#2a6b7a</Color>
+    <Color x:Key="ActivumGray">#666666</Color>
+    <Color x:Key="ActivumWhite">#FFFFFF</Color>
+    <Color x:Key="ActivumBlack">#000000</Color>
+
+
 
     <Color x:Key="White">White</Color>
     <Color x:Key="Black">Black</Color>
