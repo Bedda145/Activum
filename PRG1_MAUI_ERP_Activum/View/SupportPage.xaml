@@ -5,11 +5,54 @@
              Title="Hjälp &amp; Support">
     <VerticalStackLayout>
         <Label
-            Padding="20"
+            Padding="10"
             Text="Hjälp &amp; Support"
             Style="{StaticResource Headline}"
             SemanticProperties.HeadingLevel="Level1"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center"/>
+
+
+        <BoxView Margin="30" Color="White" 
+             HeightRequest="1" 
+             HorizontalOptions="FillAndExpand" />
+
+        <Label Margin="10" Text="Öppettider hos oss" FontSize="Medium" HorizontalTextAlignment="Center" />
+
+            <TableView Margin="10" HorizontalOptions="Center" Intent="Settings">
+                <TableRoot>
+                    <TableSection Title="Kontor (Måndag - Fredag)">
+                        <TextCell Text="Öppet" Detail="09:00 - 14:00" />
+                    </TableSection>
+
+                    <TableSection Title="Kontor (Måndag - Söndag)">
+                        <TextCell Text="Öppet" Detail="09:00 - 18:00" />
+                    </TableSection>
+
+                </TableRoot>
+            </TableView>
+
+
+
+        <BoxView Margin="30" Color="White" 
+            HeightRequest="1" 
+            HorizontalOptions="FillAndExpand" />
+
+
+        <Label
+            Padding="10"
+            FontSize="Micro"
+            HorizontalTextAlignment="Center"
+            Text="För support, vänligen kontakta oss via vårat telefon nummer eller via våran Email address. För mer information så kan du som kund besöka våran hemsida." />
+        <Label HorizontalTextAlignment="Center" TextDecorations="Underline" TextColor="Blue" Text="https://aktivum.se/support"/>
+
+
+
+
+        <Label Padding="10" HorizontalTextAlignment="Center" FontSize="Micro" Text="Telefon: (+46-11223344)" />
+            <Label Padding="10" HorizontalTextAlignment="Center" FontSize="Micro" Text="Email: (Aktivum@gmail.com)" />
+
+
+
     </VerticalStackLayout>
 </ContentPage>
