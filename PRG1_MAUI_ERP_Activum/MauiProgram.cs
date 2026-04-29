@@ -13,6 +13,7 @@ namespace PRG1_MAUI_ERP_Activum
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("Nunito-Regular.ttf", "Nunito");
                 });
 
 #if DEBUG

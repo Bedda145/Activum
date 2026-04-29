@@ -10,7 +10,7 @@
             Style="{StaticResource Headline}"
             SemanticProperties.HeadingLevel="Level1"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center"/>
 
 
         <BoxView Margin="30" Color="White" 
@@ -44,11 +44,13 @@
             FontSize="Micro"
             HorizontalTextAlignment="Center"
             Text="För support, vänligen kontakta oss via vårat telefon nummer eller via våran Email address. För mer information så kan du som kund besöka våran hemsida." />
+        <Label HorizontalTextAlignment="Center" TextDecorations="Underline" TextColor="Blue" Text="https://aktivum.se/support"/>
 
 
 
-            <Label Padding="20" HorizontalTextAlignment="Center" FontSize="Medium" Text="Telefon: (+46-11223344)" />
-            <Label Padding="20" HorizontalTextAlignment="Center" FontSize="Medium" Text="Email: (Aktivum@gmail.com)" />
+
+        <Label Padding="10" HorizontalTextAlignment="Center" FontSize="Micro" Text="Telefon: (+46-11223344)" />
+            <Label Padding="10" HorizontalTextAlignment="Center" FontSize="Micro" Text="Email: (Aktivum@gmail.com)" />
 
 
 
